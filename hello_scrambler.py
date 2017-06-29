@@ -22,8 +22,7 @@ def ScrambleEverything(our_list):
 			#print(randlist)
 			number=0
 			list_new=[]
-			
-			if(temp[])
+
 			for j in range(1,len(temp)-1):
 				#print(temp[j])
 				temp1=j
