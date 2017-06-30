@@ -18,23 +18,51 @@ def ScrambleEverything(our_list):
 			temp= list[i]
 			#print(temp)
 			#print(len(temp))
-			randlist=random.sample(range(1,len(temp)-1),len(temp)-2)
+			if (temp[(len(temp)-1)] == "," or "!" or "?" or "."):
+				randlist=random.sample(range(1,len(temp)-2),len(temp)-3)
+				flag_punc=1
+			else:	
+				randlist=random.sample(range(1,len(temp)-1),len(temp)-2)
 			#print(randlist)
 			number=0
 			list_new=[]
 
-			for j in range(1,len(temp)-1):
-				#print(temp[j])
-				temp1=j
-				j=randlist[number]
-				number+=1
-				list_new.append(temp[j])
-				j=temp1    	
+			if (temp[(len(temp)-1)] == "," or "!" or "?" or "."):
+				
+				#maslkmclsamc
+				for j in range(1,len(temp)-2):
+					#print(temp[j])
+					temp1=j
+					j=randlist[number]
+					number+=1
+					list_new.append(temp[j])
+					j=temp1    	
+
+				
+
+			else :				
+					for j in range(1,len(temp)-1):
+						#print(temp[j])
+						temp1=j
+						j=randlist[number]
+						number+=1
+						list_new.append(temp[j])
+						j=temp1    	
 
 			#print(list[i][0])
 			#print(list[i][len(temp)-1])
-			list_new.insert(0,list[i][0])
-			list_new.insert(len(list_new)+1,list[i][len(temp)-1])
+			if (flag_punc == 1):
+				list_new.insert(0,list[i][0])
+				list_new.insert(len(list_new)+1,list[i][len(temp)-2])
+				list_new.insert(len(list_new)+2,list[i][len(temp)-1])
+				flag_punc = 0
+
+			
+			else :
+
+				list_new.insert(0,list[i][0])
+				list_new.insert(len(list_new)+1,list[i][len(temp)-1])
+			
 			abc = str(''.join(list_new))
 			answer.append(abc)
 		#print(abc)
